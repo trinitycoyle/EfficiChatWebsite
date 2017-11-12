@@ -1,0 +1,29 @@
+    <div id="loginModal">
+    <div class="modal fade" role="dialog">
+        
+            <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="closeLogin()">&times;</button>
+                <h4>User Login </h4>
+            </div>
+
+            <div class="modal-body">
+            <form ng-submit="pageLogin()">
+                        <div class="form-group">
+                            <label for="username">Username</label><br>
+                            <input id="username" type="text" class="form-control" name="username" ng-model="loginData.username"><br>
+                            <label for="password">Password</label><br>
+                            <input id="password" type="text" class="form-control" name="password" ng-model="loginData.password"><br>
+                            <div class="col-xs-8"></div>
+                            <div class="col-xs-2">
+                            <button id="cancel" type="button" class="btn btn-default btn-md" ng-click="closeLogin()"><i class="fa fa-times" aria-hidden="true"></i> Cancel</button></div>
+                            <div class="col-xs-2">
+                            <button id="submit" type="submit" class="btn btn-md"><i class="fa fa-power-off" aria-hidden="true"></i> Login</button></div>
+                        </div>
+            </form>
+            </div>
+            </div>
+            </div>
+    </div>
+    </div>

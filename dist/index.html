@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="efficiChatWebApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- The above 3 meta tags *must* come first in the head; any other head 
+         content must come *after* these tags -->
+    <title>Effici-Chat</title>
+   <!-- Bootstrap -->
+
+    <link rel="stylesheet" href="styles/main-1e4e670588.css"/>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html"><img src="images/EfficiChatLogo.png" height=80 width=200 alt="Effici-Chat"></a>
+                </div>
+                <div class="navbar-collapse collapse" id="userLogin">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a id="loginModalButton" role="button" class="btn btn-block btn-md" href="#loginModal" rel="modal:open">
+                    <i class="fa fa-power-off" aria-hidden="true"></i> Login</a>
+                    </li>
+                    <!--<li ng-if="">
+                    <a>{{username}}</a>
+                    </li>
+                    <li ng-if="">
+                    <a ng-click="">
+                    <i class="fa fa-power-off" aria-hidden="true"></i> Logout</a>
+                    </li> -->
+                </ul>    
+                </div>
+            </div>
+    </nav>
+
+    <div id="loginModal">
+    <div class="modal fade" role="dialog">
+        
+            <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close">&times;</button>
+                <h4>User Login </h4>
+            </div>
+
+            <div class="modal-body">
+            <form ng-submit="pageLogin()">
+                        <div class="form-group">
+                            <label for="username">Username</label><br>
+                            <input id="username" type="text" class="form-control" name="username"><br>
+                            <label for="password">Password</label><br>
+                            <input id="password" type="text" class="form-control" name="password"><br>
+                            <div class="col-xs-8"></div>
+                            <div class="col-xs-2">
+                            <button id="cancel" type="button" class="btn btn-default btn-md"><i class="fa fa-times" aria-hidden="true"></i> Cancel</button></div>
+                            <div class="col-xs-2">
+                            <button id="submit" type="submit" class="btn btn-md"><i class="fa fa-power-off" aria-hidden="true"></i> Login</button></div>
+                        </div>
+            </form>
+            </div>
+            </div>
+            </div>
+    </div>
+    </div>
+
+    <div class="row row-content">
+        <div class="col-xs-12 col-sm-3">
+        <div id="company">
+            <h3 id="companyBar" align="center"><i class="fa fa-suitcase" aria-hidden="true"></i> Company</h3>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12">
+                            <h4 id="departmentsBar" align="center"><i class="fa fa-th" aria-hidden="true"></i> Departments</h4>
+                            <div class="box">
+                              <div class="internal">
+                                <ul class="list-unstyled">
+                                  <li ng-repeat="department in departments">
+                                  <div class="media-left media-middle">
+                                    <img class="media-object img-thumbnail img-circle" ng-src={{department.image}}>
+                                  </div>
+                                  <div class="media-body">
+                                    <a href="" groupName="departmentGroup" ng-click="openGroup()">{{department.name}}</a>
+                                  </div>
+                                  </li>
+                                </ul>
+                              </div>
+                            <div class="col-xs-8"></div>
+                            <div class="col-xs-4">
+                            <button class="btn btn-block new"><span class="glyphicon glyphicon-plus-sign"></span> New</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12">
+                            <h4 id="projectsBar" align="center"><i class="fa fa-clipboard" aria-hidden="true"></i> Projects</h4>
+                            <div class="box">
+                            <div class="internal">
+                              <ul class="list-unstyled">
+                                <li ng-repeat="project in projects">
+                                  <div class="media-left media-middle">
+                                    <img class="media-object img-thumbnail img-circle" 
+                        ng-src={{project.image}}>
+                                  </div>
+                                  <div class="media-body">
+                                    <a href="" groupName="projectGroup" ng-click="openGroup()">{{project.name}}</a>
+                                </div>
+                                </li>
+                              </ul>
+                            </div>
+                            <div class="col-xs-8"></div>
+                            <div class="col-xs-4">
+                            <button class="btn btn-block new"><span class="glyphicon glyphicon-plus-sign"></span> New</button>
+                            </div>
+                            </div>
+                        </div>    
+                    </div>
+        </div>        
+        </div>
+    
+        
+        <div class="col-xs-12 col-sm-7">
+        <div id="chat">
+            <h3 align="center">Chat</h3>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12">
+                    <ul class="list-unstyled" id="newMessage">
+                      <!--  <li>
+                             <p>{{message}}</p> 
+                        </li> -->
+                    </ul>
+                    </div>    
+                </div>
+        </div>
+        <div class="col-xs-9">
+        <div id="message">
+        <form name="messageForm" role="submit" ng-submit="sendMessage()" role="form">
+        <div class="form-group">
+            <textarea id="yourMessage" rows="7" ng-model="mymessage" class="form-control"></textarea>
+                <div class="col-xs-8"></div>
+                <div class="col-xs-2">
+                    <button id="attach" class="btn btn-block"><i class="fa fa-paperclip" aria-hidden="true"></i> File</button>
+                </div>
+                <div class="col-xs-2">
+                    <button type="submit" id="send" class="btn btn-block"><i class="fa fa-envelope" aria-hidden="true"></i> Send</button>
+                </div>
+        </div>
+        </form>
+        </div>
+        <div class="col-xs-3"></div>        
+        </div>
+        </div>
+        
+        
+        <div class="col-xs-12 col-sm-2">
+        <div id="search">
+            <div id="searchArea">
+            <input id="searchBox" type="text" placeholder="search">
+            <div class="col-xs-4"></div>
+            <div class="col-xs-8">
+            <button id="fileSearch" class="btn btn-block"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
+            </div>
+            </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12">
+                            <h4 id="usersBar" align="center"><i class="fa fa-users" aria-hidden="true"></i> Users</h4>
+                            <div class="box2">
+                            <div class="internal">
+                            <div class="media-left media-middle">
+                            <img class="media-object img-thumbnail img-circle" 
+                        ng-src={{department.image}}>
+                            </div>
+                            <div class="media-body">
+                            <ul class="list-unstyled">
+                                <li ng-repeat="department in departments"><h5>{{department.name}}</h5></li>
+                            </ul>
+                            </div>
+                            </div>
+                            </div>
+                        </div>    
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12">
+                            <h4 id="alertsBar" align="center"><span class="glyphicon glyphicon-alert"></span> Alerts</h4>
+                            <div class="box2">
+                            <div class="internal">
+                            <div class="media-left media-middle">
+                            <img class="media-object img-thumbnail img-circle" 
+                        ng-src={{department.image}}>
+                            </div>
+                            <div class="media-body">
+                            <ul class="list-unstyled">
+                            <li ng-repeat="department in departments"><h5>{{department.name}}</h5></li>
+                            </ul>
+                            </div>
+                            </div>
+                            <div class="col-xs-4"></div>
+                            <div class="col-xs-8">
+                            <button class="btn btn-block new"><span class="glyphicon glyphicon-ok"></span> Finish</button>
+                            </div>
+                            </div>
+                        </div>    
+                    </div>
+        </div>
+        </div>
+    </div>
+
+
+    <div ui-view="navbar"></div>
+    <div ui-view="home"></div>
+    
+
+   
+    <script src="scripts/main-60d2f0a6bb.js"></script>
+
+
+
+
+</body>
+
+</html>
