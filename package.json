@@ -28,6 +28,6 @@
     "npm": "3.10.10"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "server.js"
   }
 }
