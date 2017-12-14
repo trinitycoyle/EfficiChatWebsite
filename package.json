@@ -20,7 +20,14 @@
     "jshint": "^2.9.5",
     "jshint-stylish": "^2.2.1"
   },
+  "dependencies": {
+  "@angular/cli": "1.2.3",
+  },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=0.10.0",
+    "npm": "3.10.10"
+  },
+  "scripts": {
+    "start": "node server.js"
   }
 }
