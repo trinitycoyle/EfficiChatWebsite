@@ -21,7 +21,7 @@
     "jshint-stylish": "^2.2.1"
   },
   "dependencies": {
-  "@angular/cli": "1.2.3",
+  "@angular/cli": "1.2.3"
   },
   "engines": {
     "node": ">=0.10.0",
