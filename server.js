@@ -2,6 +2,11 @@ var express = require('express');
 var app = express();
 var path = require('path');
 
+var uri = "mongodb+srv://TrinityCoyle:1999Zirconia!@cluster0-sx3i1.mongodb.net/data";
+MongoClient.connect(uri, function(err, db) {
+  db.close();
+});
+
 //app.use(forceSSL());
 
 app.use(express.static(__dirname + '/dist'));
